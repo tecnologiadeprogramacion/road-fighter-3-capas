@@ -2,20 +2,22 @@ package Grafica;
 
 import javax.swing.JFrame;
 
+import Juego.ControladorJuego;
 import Juego.EntidadJugador;
 import Juego.EntidadLogica;
-import Juego.Juego;
 
-public class ControladorGraficaClase implements ControladorVistas, ControladorGrafica{
+public class GUI implements ControladorVistas, ControladorGrafica{
 	protected JFrame ventana;
 	protected PanelPantallaPrincipal panel_pantalla_principal;
 	protected PanelPantallaCarrera panel_pantalla_carrera;
+	protected PanelPantallaPuntaje panel_pantalla_puntaje;
 	
-	protected Juego juego;
+	protected ControladorJuego controlador_juego;
 	
-	public ControladorGraficaClase() {
+	public GUI() {
+		panel_pantalla_puntaje = new PanelPantallaPuntaje(this);
 		panel_pantalla_principal = new PanelPantallaPrincipal(this);
-		panel_pantalla_carrera = new PanelPantallaCarrera();
+		panel_pantalla_carrera = new PanelPantallaCarrera(this);
 		configurar_ventana();
 		registrar_oyente_ventana();
 	}
@@ -32,16 +34,11 @@ public class ControladorGraficaClase implements ControladorVistas, ControladorGr
 	protected void registrar_oyente_ventana() {
 		// To DO
 	}
-	
-	public void mostrar_pantalla_inicial() {
-		ventana.setContentPane(panel_pantalla_principal);
-		refrescar();
-	}
-	
+		
 	// De interfaz ControladorVistas
 	
 	public void accionar_inicio_juego() {
-		juego.iniciar();
+		controlador_juego.iniciar();
 	}
 	
 	public void accionar_pantalla_puntajes() {
@@ -58,8 +55,13 @@ public class ControladorGraficaClase implements ControladorVistas, ControladorGr
 	
 	// De interfaz ControladorGrafica
 
-	public void registrar_controlador_juego(Juego juego){
-		this.juego = juego;
+	public void registrar_controlador_juego(ControladorJuego controlador_juego){
+		this.controlador_juego = controlador_juego;
+	}
+
+	public void mostrar_pantalla_inicial() {
+		ventana.setContentPane(panel_pantalla_principal);
+		refrescar();
 	}
 	
 	public Observer registrar_entidad(EntidadLogica entidad_logica) {
@@ -68,7 +70,7 @@ public class ControladorGraficaClase implements ControladorVistas, ControladorGr
 		return observer_entidad;
 	}
 	
-	public Observer registrar_entidad(EntidadJugador entidad_jugador) {
+	public Observer registrar_jugador(EntidadJugador entidad_jugador) {
 		Observer observer_jugador = panel_pantalla_carrera.incorporar_entidad_jugador(entidad_jugador);
 		refrescar();
 		return observer_jugador;

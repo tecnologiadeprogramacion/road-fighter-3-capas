@@ -4,18 +4,15 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 import Juego.EntidadLogica;
-
-// Abstraccion de los dos tipos de observadores disponibles (grafico y jugador)
-// Encapsula todo el comportamiento en comun.
-
-public abstract class ObserverGrafico extends JLabel implements Observer{
+public class ObserverGrafico extends JLabel implements Observer{
 	
 	private static final long serialVersionUID = 1L;
-	private EntidadLogica entidad_observada;
+	protected EntidadLogica entidad_observada;
 	
-	protected ObserverGrafico(EntidadLogica entidad_observada) {
+	public ObserverGrafico(EntidadLogica entidad_observada) {
 		super();
 		this.entidad_observada = entidad_observada;
+		actualizar();
 	}
 	
 	public void actualizar() {
@@ -24,7 +21,7 @@ public abstract class ObserverGrafico extends JLabel implements Observer{
 	}
 	
 	protected void actualizar_imagen() {
-		String ruta_imagen = entidad_observada.get_sprite().get_ruta_imagen();
+		String ruta_imagen = entidad_observada.get_sprites().get_ruta_imagen_actual();
 		ImageIcon icono = new ImageIcon(getClass().getClassLoader().getResource(ruta_imagen));
 		setIcon(icono);
 	}

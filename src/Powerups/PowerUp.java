@@ -1,11 +1,14 @@
 package Powerups;
 
-import Fabricas.Sprite;
+import Fabricas.Sprites;
 import Juego.Entidad;
 
 public abstract class PowerUp extends Entidad {
 
-	protected PowerUp(Sprite sprite, int x, int y) {
-		super(sprite, x, y);
+	protected int puntaje;
+
+	protected PowerUp(Sprites sprites, int x, int y, int puntaje) {
+		super(sprites, x, y);
+		this.puntaje = puntaje;
 	}
 }

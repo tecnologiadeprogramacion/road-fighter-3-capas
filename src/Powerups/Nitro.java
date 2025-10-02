@@ -1,10 +1,20 @@
 package Powerups;
 
-import Fabricas.Sprite;
+import Fabricas.Sprites;
+import Vehiculos.Jugador;
+import Vehiculos.Transito;
 
 public class Nitro extends PowerUp {
 
-	public Nitro(Sprite sprite, int x, int y) {
-		super(sprite, x, y);
+	public Nitro(Sprites sprites, int x, int y) {
+		super(sprites, x, y, 20);
+	}
+
+	public void afectar(Jugador jugador){
+		// To DO
+	}
+
+	public void afectar(Transito transito){
+		// To DO
 	}
 }

@@ -1,5 +1,8 @@
 package Fabricas;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import Powerups.PowerUp;
 
 public abstract class FabricaSprites {
@@ -9,72 +12,84 @@ public abstract class FabricaSprites {
 	protected FabricaSprites(String ruta_a_carpeta) {
 		this.ruta_a_carpeta = ruta_a_carpeta;
 	}
-	
-	public Sprite get_silueta(int numero) {
-		return new Sprite(ruta_a_carpeta + "/ruta-"+numero+".png");	
+
+	// Operación de HARCODING
+	// To DO: especificar el mapeo estado-imagen para cada entidad, en cada uno de los métodos get_xxx
+	// Por ejemplo, get_silueta deberá genera un mapeo de un único estado-imagen
+	// Por ejemplo, get_vehiculo_jugador generará un mapeo con un estado-imagen por cada posible imagen
+	// que represente un sprite diferente para dicha entidad.
+	private Map<Integer,String> get_mapeo_estado_imagen_harcoding(String imagen_unica){
+		Map<Integer,String> mapeo_estado_imagen = new HashMap<Integer,String>();
+		String ruta_a_imagen_unica = ruta_a_carpeta + "/" + imagen_unica;
+		mapeo_estado_imagen.put(0, ruta_a_imagen_unica);
+		return mapeo_estado_imagen;
 	}
 	
-	public Sprite get_vehiculo_jugador() {
-		return new Sprite(ruta_a_carpeta + "/auto.png");
+	public Sprites get_silueta(int numero) {
+		return new Sprites( get_mapeo_estado_imagen_harcoding ("ruta-"+numero+".png"), 0);	
 	}
 	
-	public Sprite get_vehiculo_carrera() {
-		return new Sprite(ruta_a_carpeta + "/contrincante.png");
+	public Sprites get_vehiculo_jugador() {
+		return new Sprites( get_mapeo_estado_imagen_harcoding ("auto.png"), 0);
 	}
 	
-	public Sprite get_moto() {
-		return new Sprite(ruta_a_carpeta + "/moto.png");
+	public Sprites get_vehiculo_carrera() {
+		return new Sprites( get_mapeo_estado_imagen_harcoding ("contrincante.png"), 0);
 	}
 	
-	public Sprite get_auto() {
-		return new Sprite(ruta_a_carpeta + "/auto.png");
+	public Sprites get_moto() {
+		return new Sprites( get_mapeo_estado_imagen_harcoding ("moto.png"), 0);
 	}
 	
-	public Sprite get_camion() {
-		return new Sprite(ruta_a_carpeta + "/camion.png");
+	public Sprites get_auto() {
+		return new Sprites( get_mapeo_estado_imagen_harcoding ("auto.png"), 0);
 	}
 	
-	public Sprite get_moto(PowerUp p) {
-		return new Sprite(ruta_a_carpeta + "/moto-power-up.gif");
+	public Sprites get_camion() {
+		return new Sprites( get_mapeo_estado_imagen_harcoding ("camion.png"), 0);
 	}
 	
-	public Sprite get_auto(PowerUp p) {
-		return new Sprite(ruta_a_carpeta + "/auto-power-up.gif");
+	public Sprites get_moto(PowerUp p) {
+		return new Sprites( get_mapeo_estado_imagen_harcoding ("moto-power-up.gif"), 0);
 	}
 	
-	public Sprite get_camion(PowerUp p) {
-		return new Sprite(ruta_a_carpeta + "/camion-power-up-1.gif");
+	public Sprites get_auto(PowerUp p) {
+		return new Sprites( get_mapeo_estado_imagen_harcoding ("auto-power-up.gif"), 0);
 	}
 	
-	public Sprite get_camion(PowerUp p1, PowerUp p2) {
-		return new Sprite(ruta_a_carpeta + "/camion-power-up-2.gif");
+	public Sprites get_camion(PowerUp p) {
+		return new Sprites( get_mapeo_estado_imagen_harcoding ("camion-power-up-1.gif"), 0);
 	}
 	
-	public Sprite get_misil() {
-		return new Sprite(ruta_a_carpeta + "/misil.png");
+	public Sprites get_camion(PowerUp p1, PowerUp p2) {
+		return new Sprites( get_mapeo_estado_imagen_harcoding ("camion-power-up-2.gif"), 0);
 	}
 	
-	public Sprite get_nitro() {
-		return new Sprite(ruta_a_carpeta + "/nitro.png");
+	public Sprites get_misil() {
+		return new Sprites( get_mapeo_estado_imagen_harcoding ("misil.png"), 0);
 	}
 	
-	public Sprite get_nafta() {
-		return new Sprite(ruta_a_carpeta + "/nafta.png");
+	public Sprites get_nitro() {
+		return new Sprites( get_mapeo_estado_imagen_harcoding ("nitro.png"), 0);
 	}
 	
-	public Sprite get_anciana() {
-		return new Sprite(ruta_a_carpeta + "/anciana.png");
+	public Sprites get_nafta() {
+		return new Sprites( get_mapeo_estado_imagen_harcoding ("nafta.png"), 0);
 	}
 	
-	public Sprite get_perro() {
-		return new Sprite(ruta_a_carpeta + "/perro.png");
+	public Sprites get_anciana() {
+		return new Sprites( get_mapeo_estado_imagen_harcoding ("anciana.png"), 0);
 	}
 	
-	public Sprite get_lobo() {
-		return new Sprite(ruta_a_carpeta + "/lobo.png");
+	public Sprites get_perro() {
+		return new Sprites( get_mapeo_estado_imagen_harcoding ("perro.png"), 0);
 	}
 	
-	public Sprite get_bache() {
-		return new Sprite(ruta_a_carpeta + "/bache.png");
+	public Sprites get_lobo() {
+		return new Sprites( get_mapeo_estado_imagen_harcoding ("lobo.png"), 0);
+	}
+	
+	public Sprites get_bache() {
+		return new Sprites( get_mapeo_estado_imagen_harcoding ("bache.png"), 0);
 	}
 }

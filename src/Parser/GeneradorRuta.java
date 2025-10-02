@@ -6,25 +6,15 @@ import Juego.Silueta;
 import Powerups.Nafta;
 
 public class GeneradorRuta {
-	
-	protected FabricaEntidades fabrica_entidades;
-	
-	public GeneradorRuta(FabricaEntidades fabrica_entidades) {
-		this.fabrica_entidades = fabrica_entidades;
-	}
-	
-	public void cambiar_fabrica_entidades(FabricaEntidades fabrica_entidades) {
-		this.fabrica_entidades = fabrica_entidades;
-	}
-	
-	public Ruta generar_ruta(int numero) {
+		
+	public Ruta generar_ruta(int numero, FabricaEntidades fabrica_entidades) {
 		// To DO: parsear archivo
-		return generar_ruta_harcoding(numero);
+		return generar_ruta_harcoding(numero, fabrica_entidades);
 	}
 	
 	// Operación para harcoding
 
-	protected Ruta generar_ruta_harcoding(int numero) {
+	protected Ruta generar_ruta_harcoding(int numero, FabricaEntidades fabrica_entidades) {
 		String patente = "AAA-111";
 		float peso = 1;
 		

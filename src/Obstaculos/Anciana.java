@@ -1,10 +1,23 @@
 package Obstaculos;
 
-import Fabricas.Sprite;
+import Fabricas.Sprites;
+import Vehiculos.Jugador;
 
 public class Anciana extends Obstaculo{
 	
-	public Anciana(Sprite sprite, int x, int y) {
-		super(sprite, x, y);
+	public Anciana(Sprites sprites, int x, int y) {
+		super(sprites, x, y);
+	}
+
+	public int peso(){
+		return 50;
+	}
+	
+	public int puntaje(){
+		return -10;
+	}
+
+	public void afectar(Jugador jugador){
+		// To DO
 	}
 }

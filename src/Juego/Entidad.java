@@ -1,23 +1,27 @@
 package Juego;
 
-import Fabricas.Sprite;
+import java.util.LinkedList;
+import java.util.List;
+
+import Fabricas.Sprites;
 import Grafica.Observer;
 
 public abstract class Entidad implements EntidadLogica {
 	
-	protected Sprite sprite;
+	protected Sprites mis_sprites;
+	protected List<Observer> mis_observers;
 	protected int x;
 	protected int y;
-	protected Observer observer;
 	
-	protected Entidad(Sprite sprite, int x, int y) {
-		this.sprite = sprite;
+	protected Entidad(Sprites sprites, int x, int y) {
+		this.mis_sprites = sprites;
+		this.mis_observers = new LinkedList<Observer>();
 		this.x = x;
 		this.y = y;
 	}
 	
-	public Sprite get_sprite() {
-		return sprite;
+	public Sprites get_sprites() {
+		return mis_sprites;
 	}
 	
 	public int get_pos_x() {
@@ -37,6 +41,10 @@ public abstract class Entidad implements EntidadLogica {
 	}
 	
 	public void registrar_observer(Observer observer) {
-		this.observer = observer;
+		this.mis_observers.add(observer);
+	}
+
+	public void remover_observer(Observer observer) {
+		this.mis_observers.remove(observer);
 	}
 }

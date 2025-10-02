@@ -1,10 +1,23 @@
 package Obstaculos;
 
-import Fabricas.Sprite;
+import Fabricas.Sprites;
+import Vehiculos.Jugador;
 
 public class Perro extends Obstaculo {
 
-	public Perro(Sprite sprite, int x, int y) {
-		super(sprite, x, y);
+	public Perro(Sprites sprites, int x, int y) {
+		super(sprites, x, y);
+	}
+
+	public int peso(){
+		return 20;
+	}
+	
+	public int puntaje(){
+		return -50;
+	}
+
+	public void afectar(Jugador jugador){
+		// To DO
 	}
 }

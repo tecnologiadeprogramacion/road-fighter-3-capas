@@ -1,7 +1,6 @@
 package Grafica;
 
 import Juego.EntidadJugador;
-
 public class ObserverJugador extends ObserverGrafico{
 
 	private static final long serialVersionUID = 7017967195998406908L;
@@ -17,6 +16,8 @@ public class ObserverJugador extends ObserverGrafico{
 	
 	public void actualizar() {
 		super.actualizar();
-		panel_pantalla_carreras.actualizar_scroll_hacia_jugador(jugador_observado);
+		if (panel_pantalla_carreras != null){
+			panel_pantalla_carreras.actualizar_scroll_hacia_jugador(jugador_observado);
+		}
 	}
 }

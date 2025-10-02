@@ -1,10 +1,10 @@
 package Juego;
 
-import Fabricas.Sprite;
+import Fabricas.Sprites;
 
 public class Silueta extends Entidad {
 	
-	public Silueta(Sprite mi_sprite) {
-		super(mi_sprite, 0, 0);
+	public Silueta(Sprites sprites) {
+		super(sprites, 0, 0);
 	}
 }

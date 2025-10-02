@@ -8,18 +8,16 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 
-public class PanelPantallaPrincipal extends JPanel {
+public class PanelPantallaPrincipal extends PanelVista {
 	
 	private static final long serialVersionUID = -3884090044789061650L;
-	private ControladorVistas controlador_vistas;
 	private JLabel imagen_fondo;
 	private JButton boton_iniciar;
 	private JButton boton_puntajes;
 
 	public PanelPantallaPrincipal(ControladorVistas controlador_vistas) {
-		this.controlador_vistas = controlador_vistas;
+		super(controlador_vistas);
 		setSize(ConstantesVistas.PANEL_ANCHO, ConstantesVistas.PANEL_ALTO);
 		setLayout(null);
 		agregar_imagen_fondo();

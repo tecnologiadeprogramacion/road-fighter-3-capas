@@ -3,40 +3,41 @@ package Juego;
 import java.util.List;
 
 import Fabricas.FabricaEntidades;
-import Fabricas.FabricaSprites;
-import Fabricas.FabricaSpritesOriginales;
+import Fabricas.SpritesOriginales;
 import Grafica.ControladorGrafica;
 import Grafica.Observer;
 import Parser.GeneradorRuta;
 import Vehiculos.Jugador;
 
-public class Juego {
+public class Juego implements ControladorJuego{
 	
 	protected ControladorGrafica controlador_grafica;
 	protected GeneradorRuta generador_ruta;
-	protected FabricaSprites fabrica_sprites;
 	protected FabricaEntidades fabrica_entidades;
 	protected Ruta ruta_actual;
 	
 	public Juego(ControladorGrafica controlador_grafica) {
 		this.controlador_grafica = controlador_grafica;
-		fabrica_sprites = new FabricaSpritesOriginales();
-		fabrica_entidades = new FabricaEntidades(fabrica_sprites);
-		generador_ruta = new GeneradorRuta(fabrica_entidades);
+		fabrica_entidades = new FabricaEntidades(new SpritesOriginales());
+		generador_ruta = new GeneradorRuta();
 	}
 	
-	// Operaciones para launcher
+	// Operaciones para Launcher
 		
 	public void configurar(){
 		controlador_grafica.mostrar_pantalla_inicial();
 	}
 
-	// Operaciones de interfaz ControladorGrafica
+	// Operaciones para ControladorGrafica
 	
 	public void iniciar() {
-		ruta_actual = generador_ruta.generar_ruta(1);
+		ruta_actual = generador_ruta.generar_ruta(1, fabrica_entidades);
 		registrar_observers();
 		controlador_grafica.mostrar_pantalla_carrera();
+	}
+
+	public void cambiar_modo_juego(int modo){
+		// To DO
 	}
 	
 	protected void registrar_observers() {
@@ -49,7 +50,7 @@ public class Juego {
 	}
 	
 	protected void registrar_observer_jugador(Jugador vehiculo_jugador) {
-		Observer observer_jugador = controlador_grafica.registrar_entidad(vehiculo_jugador);
+		Observer observer_jugador = controlador_grafica.registrar_jugador(vehiculo_jugador);
 		vehiculo_jugador.registrar_observer(observer_jugador);
 	}
 	

@@ -1,15 +1,15 @@
 package Vehiculos;
 
-import Fabricas.Sprite;
+import Fabricas.Sprites;
 import Powerups.PowerUp;
 
 public class Auto extends Transito {
 	
-	public Auto(Sprite sprite, int x, int y, String patente) {
-		super(sprite, x, y, 150, patente, 160);
+	public Auto(Sprites sprites, int x, int y, String patente) {
+		super(sprites, x, y, 160, 150, patente);
 	}
 	
-	public Auto(Sprite sprite, int x, int y, String patente, PowerUp power_up) {
-		super(sprite, x, y, 150, patente, 160, power_up);
+	public Auto(Sprites sprites, int x, int y, String patente, PowerUp mi_power_up) {
+		super(sprites, x, y, 160, 150, patente, mi_power_up);
 	}
 }

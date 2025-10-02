@@ -1,10 +1,20 @@
 package Powerups;
 
-import Fabricas.Sprite;
+import Fabricas.Sprites;
+import Vehiculos.Jugador;
+import Vehiculos.Transito;
 
 public class Nafta extends PowerUp {
 
-	public Nafta(Sprite sprite, int x, int y) {
-		super(sprite, x, y);
+	public Nafta(Sprites sprites, int x, int y) {
+		super(sprites, x, y, 10);
+	}
+
+	public void afectar(Jugador jugador){
+		// To DO
+	}
+
+	public void afectar(Transito transito){
+		// To DO
 	}
 }

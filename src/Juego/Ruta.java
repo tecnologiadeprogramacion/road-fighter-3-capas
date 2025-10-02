@@ -20,8 +20,8 @@ public class Ruta {
 	protected List<PowerUp> power_ups;
 	
 	public Ruta(Silueta silueta, int numero) {
-		this.numero = numero;
 		this.silueta = silueta;
+		this.numero = numero;
 		vehiculos_carrera = new LinkedList<Carrera>();
 		vehiculos_transito = new LinkedList<Transito>();
 		obstaculos = new LinkedList<Obstaculo>();
@@ -56,8 +56,8 @@ public class Ruta {
 		return power_ups;
 	}
 	
-	public void agregar_jugador(Jugador jugador) {
-		vehiculo_jugador = jugador;
+	public void agregar_jugador(Jugador vehiculo_jugador) {
+		this.vehiculo_jugador = vehiculo_jugador;
 	}
 	
 	public void agregar_vehiculo_carrera(Carrera vehiculo_carrera) {

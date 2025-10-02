@@ -1,9 +1,9 @@
 package Juego;
 
-import Fabricas.Sprite;
+import Fabricas.Sprites;
 
 public interface EntidadLogica {
-	public Sprite get_sprite();
+	public Sprites get_sprites();
 	public int get_pos_x();
 	public int get_pos_y();
 }

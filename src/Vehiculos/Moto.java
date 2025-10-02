@@ -1,15 +1,15 @@
 package Vehiculos;
 
-import Fabricas.Sprite;
+import Fabricas.Sprites;
 import Powerups.PowerUp;
 
 public class Moto extends Transito{
 	
-	public Moto(Sprite sprite, int x, int y, String patente) {
-		super(sprite, x, y, 70, patente, 80);
+	public Moto(Sprites sprites, int x, int y, String patente) {
+		super(sprites, x, y,80, 70, patente);
 	}
 	
-	public Moto(Sprite sprite, int x, int y, String patente, PowerUp power_up) {
-		super(sprite, x, y, 70, patente, 80, power_up);
+	public Moto(Sprites sprites, int x, int y, String patente, PowerUp mi_power_up) {
+		super(sprites, x, y, 80, 70, patente, mi_power_up);
 	}
 }

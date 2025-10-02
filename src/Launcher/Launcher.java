@@ -3,7 +3,7 @@ package Launcher;
 import java.awt.EventQueue;
 
 import Grafica.ControladorGrafica;
-import Grafica.ControladorGraficaClase;
+import Grafica.GUI;
 import Juego.Juego;
 
 public class Launcher {
@@ -12,7 +12,7 @@ public class Launcher {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ControladorGrafica controlador_grafica = new ControladorGraficaClase();
+					ControladorGrafica controlador_grafica = new GUI();
 					Juego juego = new Juego(controlador_grafica);
 					controlador_grafica.registrar_controlador_juego(juego);
 					juego.configurar();

@@ -1,18 +1,33 @@
 package Vehiculos;
 
-import Fabricas.Sprite;
+import Fabricas.Sprites;
 import Powerups.PowerUp;
+import Visitor.Colisionable;
+import Visitor.Colisionador;
 
-public abstract class Transito extends Vehiculo {
+public abstract class Transito extends Vehiculo implements Colisionador, Colisionable {
 	
-	protected PowerUp power_up;
+	protected PowerUp mi_power_up;
 	
-	protected Transito(Sprite sprite, int x, int y, float peso, String patente, int velocidad) {
-		super(sprite, x, y, peso, patente, velocidad);
+	protected Transito(Sprites sprites, int x, int y, int velocidad, float peso, String patente) {
+		super(sprites, x, y, velocidad, peso, patente);
 	}
 	
-	protected Transito(Sprite sprite, int x, int y, float peso, String patente, int velocidad, PowerUp power_up) {
-		super(sprite, x, y, peso, patente, velocidad);
-		this.power_up = power_up;
+	protected Transito(Sprites sprites, int x, int y, int velocidad, float peso, String patente, PowerUp mi_power_up) {
+		super(sprites, x, y, velocidad, peso, patente);
+		this.mi_power_up = mi_power_up;
 	}
+
+	public float masa(){
+		// To DO
+		return 0;
+	}
+
+	public void chocar(Colisionable colisionable){
+		colisionable.afectar(this);
+	}
+
+	public void afectar(Jugador jugador){}
+
+    public void afectar(Transito transito){}
 }

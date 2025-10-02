@@ -15,7 +15,7 @@ import javax.swing.JScrollPane;
 import Juego.EntidadJugador;
 import Juego.EntidadLogica;
 
-public class PanelPantallaCarrera extends JPanel {
+public class PanelPantallaCarrera extends PanelVista {
 
 	private static final long serialVersionUID = -1366756178696496543L;
 	private JPanel panel_carreras;
@@ -27,7 +27,8 @@ public class PanelPantallaCarrera extends JPanel {
 	private JLabel label_velocidad;
 	private JLabel label_combustible;
 
-	public PanelPantallaCarrera() {
+	public PanelPantallaCarrera(ControladorVistas controlador_vistas) {
+		super(controlador_vistas);
 		setPreferredSize(new Dimension(ConstantesVistas.PANEL_ANCHO, ConstantesVistas.PANEL_ALTO));
 		setLayout(new BorderLayout());
 		agregar_panel_informacion();
@@ -35,9 +36,9 @@ public class PanelPantallaCarrera extends JPanel {
 	}
 	
 	public Observer incorporar_entidad(EntidadLogica entidad_logica) {
-		ObserverEntidades observer_entidad = new ObserverEntidades(entidad_logica);
-		imagen_fondo_panel_carreras.add(observer_entidad);	
-		return observer_entidad;
+		ObserverGrafico observer_grafico = new ObserverGrafico(entidad_logica);
+		imagen_fondo_panel_carreras.add(observer_grafico);	
+		return observer_grafico;
 	}
 	
 	public Observer incorporar_entidad_jugador(EntidadJugador entidad_jugador) {
@@ -48,11 +49,11 @@ public class PanelPantallaCarrera extends JPanel {
 	}
 	
 	public Observer incorporar_silueta(EntidadLogica entidad_logica) {
-		ObserverEntidades observer_entidad = new ObserverEntidades(entidad_logica);
-		imagen_fondo_panel_carreras.setIcon(new ImageIcon(getClass().getClassLoader().getResource(entidad_logica.get_sprite().get_ruta_imagen())));
+		ObserverGrafico observer_grafico = new ObserverGrafico(entidad_logica);
+		imagen_fondo_panel_carreras.setIcon(new ImageIcon(getClass().getClassLoader().getResource(entidad_logica.get_sprites().get_ruta_imagen_actual())));
 		imagen_fondo_panel_carreras.setBounds(0,0, imagen_fondo_panel_carreras.getIcon().getIconWidth(), imagen_fondo_panel_carreras.getIcon().getIconHeight());
 		panel_carreras.setPreferredSize(new Dimension(imagen_fondo_panel_carreras.getIcon().getIconWidth(), imagen_fondo_panel_carreras.getIcon().getIconHeight()));
-		return observer_entidad;
+		return observer_grafico;
 	}
 		
 	protected void actualizar_info_jugador(EntidadJugador jugador) {

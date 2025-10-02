@@ -1,10 +1,23 @@
 package Obstaculos;
 
-import Fabricas.Sprite;
+import Fabricas.Sprites;
+import Vehiculos.Jugador;
 
 public class Bache extends Obstaculo {
 
-	public Bache(Sprite sprite, int x, int y) {
-		super(sprite, x, y);
+	public Bache(Sprites sprites, int x, int y) {
+		super(sprites, x, y);
+	}
+
+	public int peso(){
+		return 0;
+	}
+	
+	public int puntaje(){
+		return -5;
+	}
+
+	public void afectar(Jugador jugador){
+		// To DO
 	}
 }

@@ -1,10 +1,19 @@
 package Obstaculos;
 
-import Fabricas.Sprite;
+import Fabricas.Sprites;
+import Vehiculos.Jugador;
 
 public class Lobo extends Perro {
 
-	public Lobo(Sprite sprite, int x, int y) {
-		super(sprite, x, y);
+	public Lobo(Sprites sprites, int x, int y) {
+		super(sprites, x, y);
+	}
+
+	public int peso(){
+		return super.peso() * 2;
+	}
+
+	public void afectar(Jugador jugador){
+		// To DO
 	}
 }
